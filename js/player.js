@@ -61,11 +61,74 @@ let All_song = [
         singer: 'Queen',
     },
 ]
+let rawData
+let albumValue
+// ALBUM VALUE FOR SEARCH
+albumValue = localStorage.getItem('albumVal')
+download()
+console.log(albumValue)
 
+// const
 let thisTrack
 let thisOneT
+const albumCover = document.getElementById('albumInfo')
 
+
+
+// ======================    M3D5
+
+// FetCHING
+function download(){
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/album/"+albumValue)
+    .then( response => response.json())
+    .then(data => rawData = data)
+    .catch(err => alert(err))
+}
+let All_song1 =[]
+
+
+// uploading data to library
+function uploadLibr(){
+    let hr = Math.floor((rawData.duration/60)/60)
+    let min = Math.floor((rawData.duration / 60) - 60)
+
+    albumCover.innerHTML = `
+    <div class="albm-img mr-3">
+        <img src="${rawData.cover_big}" alt="12">
+    </div>
+    <div class="albm-title d-flex flex-column justify-content-end">
+    <h6>Album</h6>
+    <h1>${rawData.title}</h1>
+    <div class="albm-details">
+    <img src= ${rawData.artist.picture} alt="">
+    <a href="#" onclick="artClick(this)" value=${rawData.artist.id}><span>${rawData.artist.name}</span></a>
+            <div class="albm-info">
+                <small> &bull; 2018 </small>
+                <small> &bull; ${rawData.nb_tracks} songs, </small>
+                <small> &bull; ${hr}hr ${min} min </small>
+            </div>
+    </div>
+</div>
+    `
+
+    rawData.tracks.data.forEach(elem => {
+        let dataObj = {
+        name: elem.title,
+        path: elem.preview,
+        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
+        singer: elem.artist.name,
+        tDur: elem.duration
+        }
+        All_song1.push(dataObj)
+    });
+    // console.log(All_song1)
+}
+
+
+// PLAYER
 window.onload = function(){
+    setTimeout(uploadLibr(),1000)
+// player staff
     activeTr()
     thisTrack[indx].classList.add('active-track')
     for(let trcks of thisTrack){
@@ -456,8 +519,7 @@ function resetSlider (){
 
 // creating music librbry
 const lists = document.querySelector('.play-list')
-let songLeng = All_song.length
-for (j=0; 0 < songLeng; j++){
+for (j=0; 0 < All_song.length; j++){
     createList(j)
 }
 
@@ -470,3 +532,8 @@ function activeTr (indx){
 }
 
 
+// // clicking album
+function artClick(par){
+    localStorage.setItem('artistVal', par)
+    window.location.href="artist.html" 
+}
