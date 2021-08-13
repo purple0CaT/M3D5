@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/homestyle.css">
     <link rel="stylesheet" href="css/bplayer.css">
+
+    
 </head>
 <body>
 <section class="home-page h-clr d-flex">
@@ -34,7 +36,7 @@
                     <span>Home</span></a>
                 <a href="#" class="d-flex">
                     <i class="fas fa-search"></i> 
-                    <span>Search</span></a>
+                    <input type="text" class="m-2" id="searchIt" onkeyup="fetchAlb(this.value)" placeholder="...search"/>
                 <a href="#" class="d-flex ">
                     <i class="fas fa-align-left"></i> 
                     <span>Your library</span></a>
@@ -155,71 +157,8 @@
                 <br>
                 <h3 class="header">Good Morning</h3>
                 <!-- Good Morning -->
-                <div class="d-flex morn-tabs">
-
-                    <a href="album.html" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg" alt="">
-                        </div>
-                        <p class="inline-block">Bohemian Rhapsody</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab bands-tab">
-                            <img src="https://source.unsplash.com/random?34" alt="">
-                            <img src="https://source.unsplash.com/random?24" alt="">
-                            <img src="https://source.unsplash.com/random?14" alt="">
-                            <img src="https://source.unsplash.com/random?12" alt="">
-                        </div>
-                        <p class="inline-block">Bands of Future</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <i class="fas fa-heart"></i> 
-                        </div>
-                        <p class="inline-block">Liked Songs</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://i1.sndcdn.com/artworks-000007961789-vo19ve-t500x500.jpg" alt="">
-                        </div>
-                        <p class="inline-block">Vitalic</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://i1.sndcdn.com/artworks-1zASi43BhlyH-0-t500x500.jpg" alt="">
-                        </div>
-                        <p class="inline-block">КИНО</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://source.unsplash.com/random?7" alt="">
-                        </div>
-                        <p class="inline-block">Midian</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://i.ytimg.com/vi/NeQM1c-XCDc/maxresdefault.jpg" alt="">
-                        </div>
-                        <p class="inline-block">Rammstein</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://upload.wikimedia.org/wikipedia/ru/4/45/Blondie_Heart_of_Glass_UK.jpg" alt="">
-                        </div>
-                        <p class="inline-block">Blondie</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://upload.wikimedia.org/wikipedia/ru/5/53/HighwayHellCover.jpg" alt="">
-                        </div>
-                        <p class="inline-block">AC/DC</p>
-                    </a>
-                    <a href="#" class="tab d-flex align-items-center align-middle">
-                        <div class="mr-3 liked-tab">
-                            <img src="https://upload.wikimedia.org/wikipedia/uk/d/df/RedHotChiliPeppersCalifornication.jpg" alt="">
-                        </div>
-                        <p class="inline-block">Red Hot Chili Peppers</p>
-                    </a>
+                <div class="d-flex morn-tabs" id="albumRow">
+                    <!-- ALBUMS -->
                 </div>
                 <br>
                 <div class="d-flex justify-content-between align-items-end recently-ply">
@@ -281,7 +220,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="recent-card p-3">
+                    <a href="#" class="recent-card p-3" value=''>
                         <div class="img-card">
                             <img src="https://i.ytimg.com/vi/NeQM1c-XCDc/maxresdefault.jpg" alt="">
                         </div>
