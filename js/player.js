@@ -91,7 +91,7 @@ function onload(){
         }
         })
     }
-    load_track(1)
+    load_track(0)
     timeChng()
 
     // tracktime
@@ -158,7 +158,7 @@ function createList(j){
     anchor.classList.add('play-list-body')
     anchor.classList.add('d-flex')
     anchor.classList.add('align-items-center')
-    anchor.setAttribute('value',`${j}`)
+    anchor.setAttribute('value',`${j-1}`)
 
     let firstDiv = document.createElement('div')
     firstDiv.classList.add('d-flex')

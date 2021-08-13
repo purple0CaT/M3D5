@@ -18,9 +18,7 @@ function fetchAlb (query){
         .then(dataB => AlbumData = dataB.data)
         .catch(err => alert(err))
         setTimeout(loadAlbums, 400)
-
     }
-
 }
 
 const albumRow = document.getElementById('albumRow')
