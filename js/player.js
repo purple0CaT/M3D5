@@ -168,7 +168,7 @@ function createList(j){
         </div>
     </div>
         <div class="time">
-            <small>${Math.floor((All_song[j].tDur/60)/60)} : ${Math.floor((All_song[j].tDur/60)/60)}</small>
+            <small>${Math.floor((All_song[j].tDur/60))}:${Math.floor((All_song[j].tDur % 60))}</small>
         </div>
     </a>`
     // bug fix>??????
