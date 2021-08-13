@@ -162,11 +162,11 @@
                 </div>
                 <br>
                 <div class="d-flex justify-content-between align-items-end recently-ply">
-                <h4 class="header hellotitle"> Recently played</h4>
+                <h4 class="header"> Recently played</h4>
                 <a href="#"><small >SEE ALL</small></a>
                 </div>
                 <!-- recent played -->
-                <div class="recent-played hello mt-2">
+                <div class="recent-played mt-2">
                     <a href="#" class="recent-card p-3">
                         <div class="img-card-q">
                             <img src="https://source.unsplash.com/random?34" alt="">
@@ -497,49 +497,5 @@ integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRk
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <script src="js/homeplayer.js"></script>
-<script>
-
-    window.onload = () => {
-        fetchAlbums()
-    }
-    let Albums = ['eminem', 'sidsriram']
-    const fetchAlbums = () => {
-        fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem',
-        {
-            "headers": {
-		"x-rapidapi-key": "6cbbdd862dmsh3a2cb08f5edd449p151a44jsn35d87e55fc31",
-		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
-	}
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            let datanew = data.data.slice(0,15)
-            console.log(datanew)
-            loaddata(datanew)
-        })
-    }
-
-    const loaddata = (data) => {
-       let position = document.querySelector('.hello')
-       position.innerHTML = ''
-       let hellotitle = document.querySelector('.hellotitle')
-       hellotitle.innerText = 'Eminem'
-        data.forEach(element => {
-            console.log(element.album.id)
-            position.innerHTML+= `<a href=album.html?id=${element.album.id} class="recent-card p-3">
-                        <div class="img-card">
-                            <img src="${element.album.cover_small}" alt="">
-                        </div>
-                        <div class="body-card mt-2">
-                            <h6>${element.album.title}</h6>
-                            <small>${element.artist.name}</small>
-                        </div>
-                    </a>`
-        });
-    }
-</script>
-
-
 </body>
 </html>
