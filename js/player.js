@@ -1,66 +1,4 @@
-// all song
-let All_song = [
-    {
-        name: 'Somebody to love',
-        path: 'music/bh_02.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: 'Doing all Right',
-        path: 'music/bh_03.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: 'Keep Yourself Alive',
-        path: 'music/bh_04.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: 'Killer Queen',
-        path: 'music/bh_05.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: 'Fat Bottomed Girls',
-        path: 'music/bh_06.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: 'Bohemian Rhapsody',
-        path: 'music/bh_07.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: "Now I'm Here",
-        path: 'music/bh_08.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: "Crazy Little Thing Called Love",
-        path: 'music/bh_09.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: "Lofe of My Life",
-        path: 'music/bh_10.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-    {
-        name: "We Will Rock You",
-        path: 'music/bh_11.mp3',
-        img: 'https://fresh-song.ru/uploads/posts/2018-10/1540027773_cover.jpg',
-        singer: 'Queen',
-    },
-]
+
 let rawData
 // ALBUM VALUE FOR SEARCH
 let albID = new URLSearchParams(window.location.search).get('id')
@@ -82,7 +20,12 @@ function download(){
     .then(data => rawData = data)
     .catch(err => alert(err))
 }
-let All_song1 =[]
+
+
+
+let All_song =[]
+
+
 
 // uploading data to library
 function uploadLibr(){
@@ -116,14 +59,17 @@ function uploadLibr(){
         singer: elem.artist.name,
         tDur: elem.duration
         }
-        All_song1.push(dataObj)
+        All_song.push(dataObj)
     });
-    // console.log(All_song1)
+
+for (j=1; 0 <= All_song.length; j++){
+    createList(j)
+}
 }
 
 
-// PLAYER
-window.onload = function(){
+// PLAYER FUNCTIONALITY
+function onload(){
     setTimeout(uploadLibr(),1000)
 // player staff
     activeTr()
@@ -145,7 +91,7 @@ window.onload = function(){
         }
         })
     }
-    load_track(0)
+    load_track(1)
     timeChng()
 
     // tracktime
@@ -158,6 +104,8 @@ function timeChng(){
     }
 }
 }
+
+setTimeout(onload,2000)
 
 // inputs
 const durat= document.getElementById('durationM')
@@ -227,7 +175,7 @@ function createList(j){
             fdiv1DivDiv.classList.add('align-items-center')
             
             let fdiv1DivSpan = document.createElement('span')
-            fdiv1DivSpan.innerText = j + 1
+            fdiv1DivSpan.innerText = j
 
             fdiv1DivDiv.appendChild(fdiv1DivSpan)
             fdiv1Div.appendChild(fdiv1DivDiv)
