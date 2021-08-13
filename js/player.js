@@ -154,60 +154,23 @@ mute.addEventListener('click', muteM)
 
 // Functions creating list of music
 function createList(j){
-    let anchor = document.createElement('a')
-    anchor.classList.add('play-list-body')
-    anchor.classList.add('d-flex')
-    anchor.classList.add('align-items-center')
-    anchor.setAttribute('value',`${j-1}`)
-
-    let firstDiv = document.createElement('div')
-    firstDiv.classList.add('d-flex')
-    firstDiv.classList.add('list-title')
-
-        // inside first div
-        let fdiv1Div = document.createElement('div')
-        fdiv1Div.classList.add('d-flex')
-        fdiv1Div.classList.add('align-items-center')
-        
-            // song number
-            let fdiv1DivDiv = document.createElement('div')
-            fdiv1DivDiv.classList.add('d-flex')
-            fdiv1DivDiv.classList.add('align-items-center')
-            
-            let fdiv1DivSpan = document.createElement('span')
-            fdiv1DivSpan.innerText = j
-
-            fdiv1DivDiv.appendChild(fdiv1DivSpan)
-            fdiv1Div.appendChild(fdiv1DivDiv)
-            firstDiv.appendChild(fdiv1Div)
-
-        // second div
-        let fdiv2Div = document.createElement('div')
-        fdiv2Div.classList.add('d-flex')
-        fdiv2Div.classList.add('flex-column')
-        fdiv2Div.classList.add('align-items-start')
-
-            // creating p and small
-            let fdiv2DivP = document.createElement('p')
-            fdiv2DivP.innerText = All_song[j].name
-            let fdiv2DivSm = document.createElement('small')
-            fdiv2DivSm.innerText = All_song[j].singer
-            fdiv2Div.appendChild(fdiv2DivP)
-            fdiv2Div.appendChild(fdiv2DivSm)
-            firstDiv.appendChild(fdiv2Div)
-
-    // time section
-    let time = document.createElement('div')
-    time.classList.add('time')
-    let timeRight = document.createElement('small')
-
-    time.appendChild(timeRight)
-
-    // merging
-    anchor.appendChild(firstDiv)
-    anchor.appendChild(time)
-    lists.appendChild(anchor)
-
+    lists.innerHTML+=
+    `<a class="play-list-body d-flex align-items-center" value=${j-1}>
+    <div class="d-flex list-title">
+        <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+            <span>${j}</span>
+            </div>
+        </div>
+        <div class="d-flex flex-column align-items-start">
+            <p>${All_song[j].name}</p>
+            <small>${All_song[j].singer}</small>
+        </div>
+    </div>
+        <div class="time">
+            <small>${Math.floor((All_song[j].tDur/60)/60)} : ${Math.floor((All_song[j].tDur/60)/60)}</small>
+        </div>
+    </a>`
     // bug fix>??????
 }
 
