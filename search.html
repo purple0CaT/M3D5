@@ -128,11 +128,12 @@
             <div class="mt-3 px-5">
                 <div class="d-flex w-100 justify-content-between w-100 align-content-center">
                     <!-- arrows -->
-                    <div class="col-4 d-flex justify-content-start main-arrows">
+                    <div class="col-6 d-flex justify-content-start main-arrows">
                         <a class="mr-3 arr-act" href="home.html"><i class="fas fa-chevron-circle-left"></i></a>
                         <a href="#"><i class="fas fa-chevron-circle-right"></i></a>
+                        <input type="text" class="form-control ml-4" id="inputSearch" onkeyup="searchIt(this.value)" placeholder="...search"/>                        
                     </div>
-                    <!-- space col -->
+                    <!-- search col -->
                     <!-- login acc -->
                     <div class="col-1 d-flex justify-content-end">
                         <div class="btn-group log-but-par">
@@ -141,7 +142,7 @@
                                 <span class="">  Diego </span>
                             </a>
                             <button type="button" class="btn btn-sm press-buttn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
+                              <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -153,36 +154,9 @@
                 </div>
                 <br>
                 <!-- album cover -->
-                <div class="album-header" id="albumInfo">
-                </div>
             </div>
             <br>
             <!-- Track LIST -->
-            <section class="tracks-lists px-5">
-                <div class="menu-icons d-flex align-items-center">
-                    <div class="play-alb mr-4">
-                        <i class="fas fa-play-circle" id="playA"></i>
-                    </div>
-                    <i class="far fa-heart mr-4"></i>
-                    <i class="fas fa-ellipsis-h"></i>
-                </div>
-                <br>
-                <br>
-                <!-- Title -->
-                <div class="play-list w-100 text-white">
-                    <div class="play-list-head d-flex">
-                        <div class="list-title d-flex">
-                            <span>#</span>
-                            <p>TITLE</p>
-                        </div>
-                        <div class="time">
-                            <i class="far fa-clock"></i>                        
-                        </div>
-                    </div>
-                    <br>
-                    <!-- tracks -->
-
-            </section>
         </div>
         <!-- PLAY BAR -->
         <div class="play-bar">

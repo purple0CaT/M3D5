@@ -26,6 +26,10 @@ let muteSong = 0
 
 // music libr
 let track = document.createElement('audio')
+
+
+
+
 // all song
 let All_song = [
     {
@@ -273,4 +277,12 @@ function repeatSong(){
 // reseting slider
 function resetSlider (){
     durat.value = 0
+}
+
+
+// M3D5
+// clicking album
+function valClick(par){
+    localStorage.setItem('albumVal', par)
+    window.location.href="album.html" 
 }
