@@ -62,11 +62,9 @@ let All_song = [
     },
 ]
 let rawData
-let albumValue
 // ALBUM VALUE FOR SEARCH
-albumValue = localStorage.getItem('albumVal')
+let albID = new URLSearchParams(window.location.search).get('id')
 download()
-console.log(albumValue)
 
 // const
 let thisTrack
@@ -79,7 +77,7 @@ const albumCover = document.getElementById('albumInfo')
 
 // FetCHING
 function download(){
-    fetch("https://striveschool-api.herokuapp.com/api/deezer/album/"+albumValue)
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/album/"+albID)
     .then( response => response.json())
     .then(data => rawData = data)
     .catch(err => alert(err))
