@@ -234,3 +234,47 @@ function repeatSong(){
 function resetSlider (){
     durat.value = 0
 }
+
+///////////////////////// ===== Krishna ======== //////////////////
+window.onload = () => {
+    fetchArtists()
+    //loadArtists()
+}
+
+const fetchArtists = () => {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=billie eilish", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "6cbbdd862dmsh3a2cb08f5edd449p151a44jsn35d87e55fc31",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+	}
+})
+.then(response => 
+	response.json()
+    //console.log(response)
+    )
+.then(data => {
+    console.log(data)
+    loadArtists()
+})
+.catch(err => {
+	console.error(err);
+}); 
+}
+
+const loadArtists= () => {
+    let table =  document.getElementsByClassName('dynamicArtistTracks')[0]
+    table.innerHTML = ''
+    // artists.forEach(ele => {
+        
+    //     table += `<tr>
+    //     <th scope="row">1</th>
+    //     <td class="ml-2"><img src="./Images/image-song.jpg" alt="sample-image">&nbsp;&nbsp; Keep Yourself
+    //       Alive
+    //     </td>
+    //     <td>1,23,080,00</td>
+    //     <td>2:59</td>
+    //   </tr>`
+    // });
+}
+
