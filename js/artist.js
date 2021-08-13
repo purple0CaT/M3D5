@@ -237,12 +237,13 @@ function resetSlider (){
 
 ///////////////////////// ===== Krishna ======== //////////////////
 window.onload = () => {
-    fetchArtists()
-    //loadArtists()
+   // let id = new URLSearchParams(window.location.search).get('aid')
+
+    fetchArtists(415)
 }
 
-const fetchArtists = () => {
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=billie eilish", {
+const fetchArtists = (id) => {
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/"+ id, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "6cbbdd862dmsh3a2cb08f5edd449p151a44jsn35d87e55fc31",
@@ -255,26 +256,35 @@ const fetchArtists = () => {
     )
 .then(data => {
     console.log(data)
-    loadArtists()
+    loadArtists(data)
 })
 .catch(err => {
 	console.error(err);
 }); 
 }
 
-const loadArtists= () => {
-    let table =  document.getElementsByClassName('dynamicArtistTracks')[0]
+const loadArtists= (data) => {
+    let table =  document.querySelector('.dynamicArtistTracks')
     table.innerHTML = ''
-    // artists.forEach(ele => {
+
+    let topImage = document.querySelector('.artist-top')
+    topImage.innerHTML = ''
+    let image = document.createElement('img')
+    image.classList.add('img-fluid')
+    image.classList.add('topImage')
+    //image.style.objectFit('cover')
+    image.setAttribute('src', `${data.picture_big}`)
+    topImage.appendChild(image)
+   
         
-    //     table += `<tr>
-    //     <th scope="row">1</th>
-    //     <td class="ml-2"><img src="./Images/image-song.jpg" alt="sample-image">&nbsp;&nbsp; Keep Yourself
-    //       Alive
-    //     </td>
-    //     <td>1,23,080,00</td>
-    //     <td>2:59</td>
-    //   </tr>`
-    // });
+        let details = `<tr>
+        <th scope="row">1</th>
+        <td class="ml-2"><img src="${data.picture}" alt="sample-image">&nbsp;&nbsp; ${data.name}
+        </td>
+        <td>No. of Albums = ${data.nb_album}</td>
+        <td>Radio: ${data.radio}</td>
+      </tr>`
+      table.innerHTML += details
+   
 }
 
