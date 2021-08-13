@@ -98,7 +98,7 @@ function uploadLibr(){
     <h1>${rawData.title}</h1>
     <div class="albm-details">
     <img src= ${rawData.artist.picture} alt="">
-    <a href="artist-1.html?id=${rawData.artist.id}" onclick="artClick(this)" value=${rawData.artist.id}><span>${rawData.artist.name}</span></a>
+    <a href="artist-1.html?aid=${rawData.artist.id}" onclick="artClick(this)" value=${rawData.artist.id}><span>${rawData.artist.name}</span></a>
             <div class="albm-info">
                 <small> &bull; 2018 </small>
                 <small> &bull; ${rawData.nb_tracks} songs, </small>
