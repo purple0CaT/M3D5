@@ -234,3 +234,57 @@ function repeatSong(){
 function resetSlider (){
     durat.value = 0
 }
+
+///////////////////////// ===== Krishna ======== //////////////////
+window.onload = () => {
+    let id = new URLSearchParams(window.location.search).get('aid')
+
+    fetchArtists(id)
+}
+
+const fetchArtists = (id) => {
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/"+ id, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "6cbbdd862dmsh3a2cb08f5edd449p151a44jsn35d87e55fc31",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+	}
+})
+.then(response => 
+	response.json()
+    //console.log(response)
+    )
+.then(data => {
+    console.log(data)
+    loadArtists(data)
+})
+.catch(err => {
+	console.error(err);
+}); 
+}
+
+const loadArtists= (data) => {
+    let table =  document.querySelector('.dynamicArtistTracks')
+    table.innerHTML = ''
+
+    let topImage = document.querySelector('.artist-top')
+    topImage.innerHTML = ''
+    let image = document.createElement('img')
+    image.classList.add('img-fluid')
+    image.classList.add('topImage')
+    //image.style.objectFit('cover')
+    image.setAttribute('src', `${data.picture_big}`)
+    topImage.appendChild(image)
+   
+        
+        let details = `<tr>
+        <th scope="row">1</th>
+        <td class="ml-2"><img src="${data.picture}" alt="sample-image">&nbsp;&nbsp; ${data.name}
+        </td>
+        <td>No. of Albums = ${data.nb_album}</td>
+        <td>Radio: ${data.radio}</td>
+      </tr>`
+      table.innerHTML += details
+   
+}
+
