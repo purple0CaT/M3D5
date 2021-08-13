@@ -30,8 +30,10 @@ let All_song =[]
 // uploading data to library
 function uploadLibr(){
     let hr = Math.floor((rawData.duration/60)/60)
-    let min = Math.floor((rawData.duration / 60) - 60)
-
+    let min = Math.floor((rawData.duration / 60))
+    if (min >60){
+        min = min-60
+    }
     albumCover.innerHTML = `
     <div class="albm-img mr-3">
         <img src="${rawData.cover_big}" alt="12">
@@ -45,7 +47,7 @@ function uploadLibr(){
             <div class="albm-info">
                 <small> &bull; 2018 </small>
                 <small> &bull; ${rawData.nb_tracks} songs, </small>
-                <small> &bull; ${hr}hr ${min} min </small>
+                <small> &bull; ${hr}hr ${min}min </small>
             </div>
     </div>
 </div>
