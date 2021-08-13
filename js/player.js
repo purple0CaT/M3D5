@@ -84,7 +84,6 @@ function download(){
 }
 let All_song1 =[]
 
-
 // uploading data to library
 function uploadLibr(){
     let hr = Math.floor((rawData.duration/60)/60)

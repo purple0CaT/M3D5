@@ -1,4 +1,49 @@
+window.onload = ()=>{
+    fetchAlb()
+}
+// M3D5
+// clicking album
+let AlbumData
+function fetchAlb (query){
+    if(query!== undefined && query.length > 3){
+        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q="+query)
+        .then( response => response.json())
+        .then(dataB => AlbumData = dataB.data)
+        .catch(err => alert(err))
+        setTimeout(loadAlbums, 400)
+    
+    } else {
+        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=rammstein")
+        .then( response => response.json())
+        .then(dataB => AlbumData = dataB.data)
+        .catch(err => alert(err))
+        setTimeout(loadAlbums, 400)
 
+    }
+
+}
+
+const albumRow = document.getElementById('albumRow')
+
+function loadAlbums(){
+    console.log(AlbumData[0])
+    albumRow.innerHTML = ''
+
+    for(i=0; i<10;i++)
+    albumRow.innerHTML += `
+    <a href="album.html?id=${AlbumData[i].album.id}" class="tab d-flex align-items-center align-middle">
+        <div class="mr-3 liked-tab">
+            <img src="${AlbumData[i].album.cover_big}" alt="">
+        </div>
+        <p class="inline-block">${AlbumData[i].title}</p>
+    </a>
+`
+}
+
+
+
+
+// PLAYER SCRIPT
 // inputs
 const durat= document.getElementById('durationM')
 const volume = document.getElementById('volumeM')
@@ -280,9 +325,4 @@ function resetSlider (){
 }
 
 
-// M3D5
-// clicking album
-function valClick(par){
-    localStorage.setItem('albumVal', par)
-    window.location.href="album.html" 
-}
+
