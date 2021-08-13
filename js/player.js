@@ -244,9 +244,9 @@ function createList(j){
 
             // creating p and small
             let fdiv2DivP = document.createElement('p')
-            fdiv2DivP.innerText = All_song[j].name
+            //fdiv2DivP.innerText = All_song[j].name
             let fdiv2DivSm = document.createElement('small')
-            fdiv2DivSm.innerText = All_song[j].singer
+            //fdiv2DivSm.innerText = All_song[j].singer
             fdiv2Div.appendChild(fdiv2DivP)
             fdiv2Div.appendChild(fdiv2DivSm)
             firstDiv.appendChild(fdiv2Div)
